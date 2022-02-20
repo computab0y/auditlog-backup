@@ -14,10 +14,8 @@ RUN curl -L -s \
 
 
 RUN mkdir -p /backup/auditlogs/ 
-RUN mkdir -p /backup/etcd/ 
-RUN mkdir -p /backup/dblogs/ 
 RUN chmod -R 755 /backup
-
-COPY azcopy-linux/* /usr/local/bin
-
+COPY azcopy-linux/azcopy /usr/local/bin
+COPY scripts /backup/scripts
+USER 1001
 ENTRYPOINT ["/bin/bash"]
